@@ -21,9 +21,6 @@ void parse_arg(int argc, char *argv[], double &h, int &cpus){
   }catch(...){
     throw std::runtime_error("Parsing failed");
   }
-  if (h < 1e-11){
-    throw std::runtime_error("h is too low");
-  }
   if (cpus < 1){
     throw std::runtime_error("Cant ran in less than 1 thread");
   }
@@ -80,7 +77,7 @@ int main(int argc, char *argv[]){
   }
   auto t = std::chrono::high_resolution_clock::now();
   std::cout.precision(15);
-  auto res = integrate(y, -2.999, 0, h, th);
-  std::cout << res << "(" << (res - 1.59535790382934)  <<")\n\t";
+  auto res = integrate(y, -2.99, 0, h, th);
+  std::cout << res << "(" << (res - 1.59530474926)  <<")\n\t";
   std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - t).count() <<" ms";
 }
